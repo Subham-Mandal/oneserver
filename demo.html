@@ -1,0 +1,11 @@
+<input id='myinput'><button onclick='dopost()'>Post</button>
+
+    <script src='https://cdn.jsdelivr.net/gh/Subham-Mandal/oneserver@main/server.js'> </script>
+         
+       <script>
+function dopost(){
+let text=document.getElementById('myinput').value;
+ server.child('status').push(text);
+      }
+     </script>
+  
