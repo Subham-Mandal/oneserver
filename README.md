@@ -2,6 +2,7 @@
 
 **Developed by: Subham Mandal**
 
+use : https://cdn.jsdelivr.net/gh/Subham-Mandal/oneserver@master/install.js
 ---
 
 **Introduction:**
