@@ -72,7 +72,7 @@ function SET(path, text, successCallback, errorCallback) {
         });
 }
 
-function AUTO(myFunction, path, key ) {
+function DEPLOY(myFunction, path, key ) {
     var script = 'server.child(' + '"' + path + '/' + key + '"' + ').on("value", function(snapshot) {' + myFunction + '(snapshot.val()); });';
     eval(script); 
 }
