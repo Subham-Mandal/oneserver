@@ -2,7 +2,7 @@
 
 **Developed by: Subham Mandal**
 
-use : https://cdn.jsdelivr.net/gh/Subham-Mandal/oneserver@master/code.js
+use : https://cdn.jsdelivr.net/gh/Subham-Mandal/oneserver@master/v1.js
 ---
 
 **Introduction:**
