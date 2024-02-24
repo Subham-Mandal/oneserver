@@ -1,0 +1,61 @@
+
+<script src="https://cdn.jsdelivr.net/gh/Subham-Mandal/oneserver@master/v1.js"></script>
+<p id='view'></p>
+<input id='myinput' >
+<button onclick='update()'>Save</button>
+
+
+<script>
+
+const path='app1/user1';
+
+const username = prompt("Please enter your username:");
+const password = prompt("Please enter your password:");
+
+if (username && password) {
+    sessionStorage.setItem("username", username);
+    sessionStorage.setItem("password", password);
+    display(username, password);
+} else {
+    alert('Sorry!');
+    location.reload();
+}
+
+function display(username, password) {
+    const decodedUsername = btoa(username);
+    const decodedPassword = btoa(password);
+
+    server.child(path).once('value', function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+            let key = childSnapshot.key;
+            let value = childSnapshot.val();
+
+            let modifiedValue = value.replace(new RegExp(decodedUsername, 'g'), 'a').replace(new RegExp(decodedPassword, 'g'), 'b');
+
+            var p = document.createElement('p');
+
+            p.textContent = key + ' : ' + atob(modifiedValue);
+
+            document.body.appendChild(p);
+        });
+    });
+}
+
+  function update() {
+        let text = document.getElementById('myinput').value;
+        let path = path + Date.now().toString();
+        const user = btoa(sessionStorage.getItem("username"));
+        const pass = btoa(sessionStorage.getItem("password"));
+        const encode = btoa(text).replace(/a/g, user).replace(/b/g, pass);
+        SET(path, encode, done);
+    }
+
+    function done() {
+    let text = document.getElementById('myinput').value;
+    view.innerHTML+='<br>'+text;
+    text.value='';
+    }
+    
+    
+    
+</script>
