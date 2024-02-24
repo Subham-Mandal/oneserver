@@ -1,0 +1,27 @@
+<head>
+<script src="https://cdn.jsdelivr.net/gh/Subham-Mandal/oneserver@master/v1.js"></script>
+</head>
+
+<p id='view'></p>
+<input id='myinput' onchange='update()'>
+
+
+<script>
+    var view = document.getElementById('view');
+    let text = document.getElementById('myinput');
+    var path = 'app1/temp';
+ 
+    DEPLOY(path,'tempout');
+
+    function update() {
+        let text = document.getElementById('myinput').value;
+        SET(path,text,clear);
+    }
+
+    function tempout(value) {view.innerHTML=value;}
+    
+    function clear(){text.value='';}
+    
+    
+    
+</script>
