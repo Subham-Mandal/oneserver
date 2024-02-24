@@ -41,7 +41,7 @@ function GET(path, callback) {
     });
 }
 
-function POST(path, text, successCallback, errorCallback) {
+function PUSH(path, text, successCallback, errorCallback) {
     return server.child(path).push(text)
         .then(function() {
             if (successCallback) {
@@ -54,6 +54,29 @@ function POST(path, text, successCallback, errorCallback) {
             }
         });
 }
+
+
+
+
+function SET(path, text, successCallback, errorCallback) {
+    return server.child(path).set(text)
+        .then(function() {
+            if (successCallback) {
+                successCallback("Success");
+            }
+        })
+        .catch(function(error) {
+            if (errorCallback) {
+                errorCallback(error.message);
+            }
+        });
+}
+
+function AUTO(myFunction, path, key ) {
+    var script = 'server.child(' + '"' + path + '/' + key + '"' + ').on("value", function(snapshot) {' + myFunction + '(snapshot.val()); });';
+    eval(script); 
+}
+
 
 function DELETE(path, text = '', successCallback, errorCallback) {
     if (text === '' || text === path) {
