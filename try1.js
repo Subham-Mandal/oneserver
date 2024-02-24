@@ -73,7 +73,7 @@ function SET(path, text, successCallback, errorCallback) {
 }
 
 function DEPLOY(path,functionName) {
-    var script = 'server.child(' + '"' + path + '/' + key + '"' + ').on("value", function(snapshot) {' + path,functionName + '(snapshot.val()); });';
+    var script = 'server.child(' + '"' + path + '"' + ').on("value", function(snapshot) {' + path,functionName + '(snapshot.val()); });';
     eval(script); 
 }
 
