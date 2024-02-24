@@ -24,7 +24,7 @@ function display(username, password) {
     const decodedUsername = btoa(username);
     const decodedPassword = btoa(password);
 
-    server.child('protected/subham/').once('value', function(snapshot) {
+    server.child('protected/mydata/').once('value', function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
             let key = childSnapshot.key;
             let value = childSnapshot.val();
@@ -42,7 +42,7 @@ function display(username, password) {
 
   function update() {
         let text = document.getElementById('myinput').value;
-        let path = 'protected/subham/' + Date.now().toString();
+        let path = 'protected/mydata/' + Date.now().toString();
         const user = btoa(sessionStorage.getItem("username"));
         const pass = btoa(sessionStorage.getItem("password"));
         const encode = btoa(text).replace(/a/g, user).replace(/b/g, pass);
