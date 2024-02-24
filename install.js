@@ -78,6 +78,13 @@ function DEPLOY(myFunction, path, key ) {
 }
 
 
+function EVENT(functionName,path){
+let scriptElement = document.createElement('script');
+let scriptText = document.createTextNode("server.child('"+path+"').on('value', function(snapshot) { "+functionName+"();});");
+scriptElement.appendChild(scriptText);
+document.head.appendChild(scriptElement);
+}
+
 function DELETE(path, text = '', successCallback, errorCallback) {
     if (text === '' || text === path) {
         return server.child(path).remove()
