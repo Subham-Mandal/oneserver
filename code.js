@@ -72,13 +72,13 @@ function SET(path, text, successCallback, errorCallback) {
         });
 }
 
-function DEPLOY(myFunction, path, key ) {
-    var script = 'server.child(' + '"' + path + '/' + key + '"' + ').on("value", function(snapshot) {' + myFunction + '(snapshot.val()); });';
+function DEPLOY(path,functionName) {
+    var script = 'server.child(' + '"' + path + '/' + key + '"' + ').on("value", function(snapshot) {' + path,functionName + '(snapshot.val()); });';
     eval(script); 
 }
 
 
-function EVENT(functionName,path){
+function EVENT(path,functionName){
 let scriptElement = document.createElement('script');
 let scriptText = document.createTextNode("server.child('"+path+"').on('value', function(snapshot) { "+functionName+"();});");
 scriptElement.appendChild(scriptText);
