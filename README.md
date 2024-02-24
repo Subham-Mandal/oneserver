@@ -2,7 +2,7 @@
 
 **Developed by: Subham Mandal**
 
-use : https://cdn.jsdelivr.net/gh/Subham-Mandal/oneserver@master/install.js
+use : https://cdn.jsdelivr.net/gh/Subham-Mandal/oneserver@master/code.js
 ---
 
 **Introduction:**
@@ -95,6 +95,8 @@ OneServer is a real-time data sharing platform developed by Subham Mandal. This 
      ```
 
 5. **DEPLOY Function:**
+
+**NEW UPDATE : use EVENT(functionName,path) instead of DEPLOY for store message (PUSH-GET) system**
 
    - **Function Syntax:** `DEPLOY(myFunction, path, key)`
 
